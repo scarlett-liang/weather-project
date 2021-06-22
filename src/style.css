@@ -1,0 +1,71 @@
+body {
+  background: linear-gradient(
+    to bottom,
+    rgb(243, 177, 157, 50%),
+    rgb(242, 112, 156, 50%)
+  );
+}
+h1 {
+  margin: 50px auto;
+  font-family: "Pacifico", cursive;
+  font-size: 50px;
+}
+h2 {
+  margin: 20px auto;
+  font-family: "Dancing Script", cursive;
+  font-size: 50px;
+  font-weight: 800;
+}
+ul {
+  list-style: none;
+}
+.weatherDescri {
+  font-size: 30px;
+  font-weight: 500;
+}
+.container {
+  background: linear-gradient(
+    to bottom,
+    rgb(242, 112, 156),
+    rgb(255, 148, 114)
+  );
+  display: block;
+  margin: 70px auto;
+  padding: 30px 20px;
+  text-align: center;
+  max-width: 600px;
+  font-family: "Courier New", Courier, monospace;
+  border-radius: 20px;
+  box-shadow: 1px 1px 20px #6e6e6e;
+}
+.cityinfo {
+  background: #ffffff00;
+  border: solid 1px #000000;
+}
+.searchbutton {
+  background: #ffffff00;
+  border: solid 1px #000000;
+  transition: all 200ms ease-in-out;
+}
+.autobutton {
+  background: #000000;
+  border: solid 1px #000000;
+  color: rgb(242, 112, 156);
+}
+.row {
+  margin: 30px auto;
+}
+.updateTime {
+  font-size: 10px;
+}
+.searchbutton:hover {
+  background: #000000;
+  border: solid 1px #000000;
+  color: rgb(242, 112, 156);
+}
+.autobutton:hover {
+  background: #ffffff00;
+  border: solid 1px #000000;
+  transition: all 200ms ease-in-out;
+  color: #000000;
+}
