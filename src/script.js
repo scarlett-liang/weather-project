@@ -24,9 +24,9 @@ function showCity(event) {
   let citySubmit = document.querySelector("#city-input");
   let h1 = document.querySelector("h1");
   if (citySubmit.value.length !== 0) {
-    h1.innerHTML = `💗 ${citySubmit.value} 💗`;
+    h1.innerHTML = citySubmit.value;
   } else {
-    h1.innerHTML = `💗 City name? 💗`;
+    h1.innerHTML = `City name?`;
   }
 }
 let formSearch = document.querySelector("form");
@@ -43,7 +43,7 @@ function showWeather(response) {
   let tempUpdate = document.querySelector("#temp");
   tempUpdate.innerHTML = Math.round(response.data.main.temp);
   let locationUpdate = document.querySelector("h1");
-  locationUpdate.innerHTML = `💗 ${response.data.name} 💗`;
+  locationUpdate.innerHTML = response.data.name;
   let humidityUpdate = document.querySelector("#humidity");
   humidityUpdate.innerHTML = response.data.main.humidity;
   let windUpdate = document.querySelector("#wind");
