@@ -18,8 +18,6 @@ function getDate(now) {
   ];
   return `${days[now.getDay()]} ${hour}:${minute}`;
 }
-let updateTime = document.querySelector("#time");
-updateTime.innerHTML = getDate(new Date());
 
 function showCity(event) {
   event.preventDefault();
@@ -29,7 +27,6 @@ function showCity(event) {
     h1.innerHTML = `💗 ${citySubmit.value} 💗`;
   } else {
     h1.innerHTML = `💗 City name? 💗`;
-    alert("Try type in a city name");
   }
 }
 let formSearch = document.querySelector("form");
@@ -42,17 +39,28 @@ function searchWeather() {
   axios.get(apiUrl).then(showWeather);
 }
 function showWeather(response) {
+  celsiusTemp = Math.round(response.data.main.temp);
   let tempUpdate = document.querySelector("#temp");
   tempUpdate.innerHTML = Math.round(response.data.main.temp);
   let locationUpdate = document.querySelector("h1");
   locationUpdate.innerHTML = `💗 ${response.data.name} 💗`;
-  console.log(response);
   let humidityUpdate = document.querySelector("#humidity");
   humidityUpdate.innerHTML = response.data.main.humidity;
   let windUpdate = document.querySelector("#wind");
   windUpdate.innerHTML = response.data.wind.speed;
   let descriUpdate = document.querySelector("#description");
   descriUpdate.innerHTML = response.data.weather[0].description;
+  let updateTime = document.querySelector("#time");
+  updateTime.innerHTML = getDate(new Date(response.data.dt * 1000));
+  let iconUpdate = document.querySelector("#icon");
+  iconUpdate.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconUpdate.setAttribute(
+    "alt",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].main}@2x.png`
+  );
 }
 let clickSearchButton = document.querySelector("#search-button");
 clickSearchButton.addEventListener("click", searchWeather);
@@ -69,3 +77,25 @@ function showLocation(position) {
 }
 let clickAutoButton = document.querySelector("#auto-button");
 clickAutoButton.addEventListener("click", AutoLocate);
+
+function showFahren(event) {
+  event.preventDefault();
+  fahrenLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+  let tempUpdate = document.querySelector("#temperature");
+  let currentFahren = Math.round((celsiusTemp * 9) / 5 + 32);
+  tempUpdate.innerHTML = `${currentFahren}ºF`;
+}
+function showCelsius(event) {
+  event.preventDefault();
+  fahrenLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  let tempUpdate = document.querySelector("#temperature");
+  tempUpdate.innerHTML = `${celsiusTemp}ºC`;
+}
+
+let celsiusTemp = null;
+let fahrenLink = document.querySelector("#fahrenheit");
+fahrenLink.addEventListener("click", showFahren);
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", showCelsius);

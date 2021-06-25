@@ -13,12 +13,12 @@
     />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <link rel="stylesheet" href="src/style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&family=Roboto+Mono:wght@200&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
     <div class="container">
@@ -44,15 +44,24 @@
       </form>
 
       <h1>💗 City name? 💗</h1>
-      <h2>
-        <span id="temp">25</span>ºC
-        <div class="weatherDescri" id="description">Clear sky</div>
-      </h2>
+
       <div class="row">
-        <div>Precipitation: <span id="preci">0</span>%</div>
-        <div>Humidity: <span id="humidity">0</span>%</div>
-        <div>Wind Speed: <span id="wind">0</span>km/h</div>
-        <div id="time"></div>
+        <div class="col-6">
+          <img src="" alt="" id="icon" class="currentIcon" />
+          <div class="degreeUnit">
+            <a href="#" class="active" id="celsius">ºC</a> |
+            <a href="#" id="fahrenheit">ºF</a>
+          </div>
+        </div>
+        <div class="col-6 currentWeather">
+          <div class="temperature" id="temperature">
+            <span id="temp">--</span> ºC
+          </div>
+          <div class="weatherDescri" id="description">let's see...</div>
+          <div>Humidity: <span id="humidity">--</span>%</div>
+          <div>Wind Speed: <span id="wind">--</span>km/h</div>
+          <div id="time"></div>
+        </div>
       </div>
       <hr />
       <div class="row">

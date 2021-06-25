@@ -10,18 +10,36 @@ h1 {
   font-family: "Pacifico", cursive;
   font-size: 50px;
 }
-h2 {
-  margin: 20px auto;
-  font-family: "Dancing Script", cursive;
-  font-size: 50px;
-  font-weight: 800;
-}
+
 ul {
   list-style: none;
 }
+.currentIcon {
+  width: 150px;
+}
+.degreeUnit a {
+  text-decoration: none;
+  cursor: default;
+}
+.active {
+  color: #000000;
+}
+.temperature {
+  margin: 0 auto;
+  font-family: "Dancing Script", cursive;
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 1;
+}
 .weatherDescri {
+  margin: 20px auto;
+  font-family: "Dancing Script", cursive;
   font-size: 30px;
   font-weight: 500;
+  line-height: 1;
+}
+.currentWeather {
+  text-align: left;
 }
 .container {
   background: linear-gradient(
@@ -62,6 +80,10 @@ ul {
   display: block;
   text-align: center;
   margin: 0 auto 70px auto;
+}
+.active:hover {
+  color: #000000;
+  text-decoration: none;
 }
 .searchbutton:hover {
   background: #000000;
