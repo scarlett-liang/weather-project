@@ -25,18 +25,18 @@ function showCity(event) {
   let h1 = document.querySelector("h1");
   if (citySubmit.value.length !== 0) {
     h1.innerHTML = citySubmit.value;
-  } else {
-    h1.innerHTML = `City name?`;
   }
 }
-let formSearch = document.querySelector("form");
-formSearch.addEventListener("submit", showCity);
 
-function searchWeather() {
+function searchWeather(city) {
   let apiKey = "af52e0b61c120c6390d319d4b6e5bb13";
-  let cityInput = document.getElementById("city-input").value;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showWeather);
+}
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  searchWeather(cityInputElement.value);
 }
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -105,10 +105,8 @@ function showWeather(response) {
   );
   getLocation(response.data.coord);
 }
-let clickSearchButton = document.querySelector("#search-button");
-clickSearchButton.addEventListener("click", searchWeather);
 
-function AutoLocate() {
+function autoLocate() {
   navigator.geolocation.getCurrentPosition(showLocation);
 }
 function showLocation(position) {
@@ -118,5 +116,10 @@ function showLocation(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showWeather);
 }
+let formSearch = document.querySelector("form");
+formSearch.addEventListener("submit", showCity);
+let clickSearchButton = document.querySelector("#search-button");
+clickSearchButton.addEventListener("click", handleSubmit);
 let clickAutoButton = document.querySelector("#auto-button");
-clickAutoButton.addEventListener("click", AutoLocate);
+clickAutoButton.addEventListener("click", autoLocate);
+searchWeather("Frankfurt");

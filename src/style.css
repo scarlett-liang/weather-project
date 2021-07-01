@@ -45,7 +45,6 @@ ul {
     rgb(243, 177, 157, 60%),
     rgba(133, 191, 245, 0.6)
   );
-
   display: block;
   margin: 70px auto 0 auto;
   padding: 30px 20px;
@@ -88,8 +87,6 @@ ul {
   font-size: 20px;
 }
 
-.temp-max {
-}
 .temp-min {
   color: #7e7e7e;
 }
