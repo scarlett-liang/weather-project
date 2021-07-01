@@ -38,6 +38,48 @@ function searchWeather() {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showWeather);
 }
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = date.getDay();
+  return days[day];
+}
+function showForecast(response) {
+  let days = response.data.daily;
+  let forecast = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2 forecast">
+          <div class="day">${formatDay(day.dt)}</div>
+          <img
+            src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"
+            alt=""
+            width="70px"
+            class="iconForecast"
+          />
+          <div class="tempForecast">
+            <span class="temp-max">${Math.round(
+              day.temp.max
+            )}º</span> <span class="temp-min">${Math.round(
+          day.temp.min
+        )}º</span>
+          </div>
+        </div>`;
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
+}
+function getLocation(coordinate) {
+  let newLat = coordinate.lat;
+  let newLon = coordinate.lon;
+  let apiKey = "af52e0b61c120c6390d319d4b6e5bb13";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${newLat}&lon=${newLon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
+}
 function showWeather(response) {
   celsiusTemp = Math.round(response.data.main.temp);
   let tempUpdate = document.querySelector("#temp");
@@ -61,6 +103,7 @@ function showWeather(response) {
     "alt",
     `http://openweathermap.org/img/wn/${response.data.weather[0].main}@2x.png`
   );
+  getLocation(response.data.coord);
 }
 let clickSearchButton = document.querySelector("#search-button");
 clickSearchButton.addEventListener("click", searchWeather);

@@ -80,7 +80,19 @@ ul {
   text-align: center;
   margin: 0 auto 70px auto;
 }
+.forecast {
+  text-align: center;
+}
+.day {
+  font-family: "Dancing Script", cursive;
+  font-size: 20px;
+}
 
+.temp-max {
+}
+.temp-min {
+  color: #7e7e7e;
+}
 .searchbutton:hover {
   background: #000000;
   border: solid 1px #000000;
