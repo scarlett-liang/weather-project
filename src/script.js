@@ -56,7 +56,7 @@ function showForecast(response) {
           <div class="day">${formatDay(day.dt)}</div>
           <img
             src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"
-            alt=""
+            alt="${day.weather[0].description}"
             width="70px"
             class="iconForecast"
           />
@@ -99,10 +99,7 @@ function showWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  iconUpdate.setAttribute(
-    "alt",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].main}@2x.png`
-  );
+  iconUpdate.setAttribute("alt", response.data.weather[0].description);
   getLocation(response.data.coord);
 }
 
