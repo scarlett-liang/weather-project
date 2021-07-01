@@ -77,3 +77,25 @@ function showLocation(position) {
 }
 let clickAutoButton = document.querySelector("#auto-button");
 clickAutoButton.addEventListener("click", AutoLocate);
+
+function showFahren(event) {
+  event.preventDefault();
+  fahrenLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+  let tempUpdate = document.querySelector("#temperature");
+  let currentFahren = Math.round((celsiusTemp * 9) / 5 + 32);
+  tempUpdate.innerHTML = `${currentFahren}ºF`;
+}
+function showCelsius(event) {
+  event.preventDefault();
+  fahrenLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  let tempUpdate = document.querySelector("#temperature");
+  tempUpdate.innerHTML = `${celsiusTemp}ºC`;
+}
+
+let celsiusTemp = null;
+let fahrenLink = document.querySelector("#fahrenheit");
+fahrenLink.addEventListener("click", showFahren);
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", showCelsius);
