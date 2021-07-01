@@ -80,10 +80,7 @@ ul {
   text-align: center;
   margin: 0 auto 70px auto;
 }
-.active:hover {
-  color: #000000;
-  text-decoration: none;
-}
+
 .searchbutton:hover {
   background: #000000;
   border: solid 1px #000000;
